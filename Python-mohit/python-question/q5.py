@@ -1,1 +1,0 @@
-# ye humse solve ni hua!!
