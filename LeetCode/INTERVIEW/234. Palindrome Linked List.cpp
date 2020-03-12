@@ -1,7 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+struct ListNode
+{
+    int val;
+    ListNode *next;
+};
 
-bool solve()
+bool solve(ListNode *head)
 {
     vector<int> v;
     stack<int> s;
