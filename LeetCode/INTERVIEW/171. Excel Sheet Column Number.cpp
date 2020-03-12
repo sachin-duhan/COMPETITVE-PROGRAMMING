@@ -1,10 +1,10 @@
 #include <iostream>
-#include<math.h>
+#include <math.h>
 using namespace std;
 
 int titleToNumber(string s)
 {
-#define ll long long
+    #define ll long long
     ll res = 0;
 
     for (int i = 0; i < s.length(); i++)
