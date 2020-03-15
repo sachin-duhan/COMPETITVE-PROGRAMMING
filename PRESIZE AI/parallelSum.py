@@ -7,7 +7,6 @@ def solve(arr):
         return -1
     arr.sort()
     for i in range(n):
-        
-
+        pass
 arr = [1, 2, 3, 4]
 print(solve(arr))
