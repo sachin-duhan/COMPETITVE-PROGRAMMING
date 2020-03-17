@@ -39,7 +39,7 @@ int betterSolution(vector<int> &nums)
 int main()
 {
     vector<int> arr({0, 0, 1, 1, 1, 2, 2, 3, 3, 4});
-    int n = removeDuplicates(arr);
+    int n = betterSolution(arr);
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
