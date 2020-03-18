@@ -29,10 +29,22 @@ int trailingZeroes(int n)
     return ans;
 }
 
+int BetterSolution(int n)
+{
+    int ret = 0;
+    while (n)
+    {
+        ret += n / 5;
+        n /= 5;
+    }
+    return ret;
+}
+
+
 int main()
 {
     int n = 10;
     cout << trailingZeroes(n) << endl;
-    // cout << BetterSolution(n) << endl;
+    cout << BetterSolution(n) << endl;
     return 0;
 }
