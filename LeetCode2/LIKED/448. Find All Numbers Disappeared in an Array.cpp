@@ -6,7 +6,7 @@ using namespace std;
 vector<int> findDisappearedNumbers(vector<int> &given)
 {
     int n = given.size();
-    vector<int> solution(n);
+    vector<int> solution(n, -1);
     for (int i = 0; i < n; i++)
         solution[given[i] - 1] = 1;
 
