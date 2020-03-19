@@ -5,8 +5,8 @@ class TreeNode
 {
 public:
     int val;
-    TreeNode *left;
-    TreeNode *right;
+    TreeNode *left  = NULL;
+    TreeNode *right = NULL;
 
     TreeNode *newNode(int x)
     {
@@ -73,3 +73,17 @@ void PRINT_PREORDER_TRAVERSAL(const TreeNode *root)
     PRINT_INORDER_TRAVERSAL(root->left);
     PRINT_INORDER_TRAVERSAL(root->right);
 }
+
+bool isTreeIdentical(TreeNode *head1, TreeNode *head2)
+{
+    if (!head1 && !head2)
+        return true;
+    if (!head1 || head2)
+        return false;
+    return (
+        (head1->val == head2->val) 
+        && isTreeIdentical(head1->left, head2->left) 
+        && isTreeIdentical(head1->right, head2->right)
+    );
+}
+
