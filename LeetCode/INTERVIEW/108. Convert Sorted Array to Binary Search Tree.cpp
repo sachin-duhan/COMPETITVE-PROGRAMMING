@@ -8,7 +8,7 @@ struct TreeNode
     TreeNode *left = nullptr, *right = nullptr;
 };
 
-TreeNode *sortedArrayToBST(vector &nums)
+TreeNode *sortedArrayToBST(vector<int> &nums)
 {
 
     int size = nums.size() - 1;
@@ -18,7 +18,7 @@ TreeNode *sortedArrayToBST(vector &nums)
     return root;
 }
 
-TreeNode *convert(vector &nums, int i, int j, int size)
+TreeNode *convert(vector<int> &nums, int i, int j, int size)
 {
     if (i > j || j > size)
         return NULL;
