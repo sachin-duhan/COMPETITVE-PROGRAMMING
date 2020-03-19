@@ -1,25 +1,54 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct Tree
+class TreeNode
 {
+public:
     int val;
-    Tree *right = nullptr;
-    Tree *left = nullptr;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode *newNode(int x)
+    {
+        TreeNode *Node = new TreeNode();
+        Node->val = x;
+        Node->right = NULL;
+        Node->left = NULL;
+        return Node;
+    }
+
 };
 
-// finding size of the Tree
-int size_of_tree(Tree *root)
+int size(TreeNode *root)
 {
     if (!root)
         return 0;
-    return size_of_tree(root->right) + 1 + size_of_tree(root->left);
+    return size(root->right) + 1 + size(root->left);
 }
 
-// TREE TRAVERSAL
-void PRINT_INORDER_TRAVERSAL(Tree *root)
+void PRINT_INORDER_TRAVERSAL(const TreeNode *root)
 {
-    if(!root)return;
+    if (!root)
+        return;
+    PRINT_INORDER_TRAVERSAL(root->left);
+    cout << root->val << " ";
+    PRINT_INORDER_TRAVERSAL(root->right);
+}
+
+void PRINT_POSTORDER_TRAVERSAL(const TreeNode *root)
+{
+    if (!root)
+        return;
+    PRINT_INORDER_TRAVERSAL(root->left);
     PRINT_INORDER_TRAVERSAL(root->right);
     cout << root->val << " ";
+}
+
+void PRINT_PREORDER_TRAVERSAL(const TreeNode *root)
+{
+    if (!root)
+        return;
+    cout << root->val << " ";
+    PRINT_INORDER_TRAVERSAL(root->left);
+    PRINT_INORDER_TRAVERSAL(root->right);
 }
