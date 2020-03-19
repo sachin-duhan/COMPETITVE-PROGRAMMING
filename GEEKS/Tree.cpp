@@ -17,6 +17,27 @@ public:
         return Node;
     }
 
+    TreeNode *insert(TreeNode *head, int x)
+    {
+        TreeNode *node = newNode(x);
+        TreeNode *temp = NULL; // will be used to find the position of insertion!
+        TreeNode *parent_of_temp = NULL;
+        while (temp)
+        {
+            parent_of_temp = temp;
+            if (temp->val < x)
+                temp = temp->left;
+            else
+                temp = temp->right;
+        }
+        if (!parent_of_temp)
+            temp = node;
+        else if (parent_of_temp->val < x)
+            parent_of_temp->left = node;
+        else
+            parent_of_temp->right = node;
+        return parent_of_temp; // this is the node at which the new node is insterted!
+    }
 };
 
 int size(TreeNode *root)
