@@ -5,7 +5,7 @@ class TreeNode
 {
 public:
     int val;
-    TreeNode *left  = NULL;
+    TreeNode *left = NULL;
     TreeNode *right = NULL;
 
     TreeNode *newNode(int x)
@@ -80,10 +80,28 @@ bool isTreeIdentical(TreeNode *head1, TreeNode *head2)
         return true;
     if (!head1 || head2)
         return false;
-    return (
-        (head1->val == head2->val) 
-        && isTreeIdentical(head1->left, head2->left) 
-        && isTreeIdentical(head1->right, head2->right)
-    );
+    return ((head1->val == head2->val) && isTreeIdentical(head1->left, head2->left) && isTreeIdentical(head1->right, head2->right));
 }
 
+int height(TreeNode *root)
+{
+    if (!root)
+        return 0;
+    int lHeight = height(root->left);
+    int rHeight = height(root->right);
+    return max(lHeight, rHeight) + 1;
+}
+
+void *mirror(TreeNode *root)
+{
+    if (!root) return;
+    else
+    {
+        TreeNode *temp = NULL;
+        mirror(root->left);
+        mirror(root->right);
+        temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+    }
+}
