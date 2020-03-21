@@ -35,7 +35,7 @@ vector<string> generateParenthesis(int n)
 
 int main()
 {
-    int n = 3;
+    int n = 10;
     vector<string> S = generateParenthesis(n);
     for (auto str : S)
         cout << str << endl;
