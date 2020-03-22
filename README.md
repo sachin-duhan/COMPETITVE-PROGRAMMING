@@ -1,2 +1,1 @@
-# DS and algo
-
+# Competitive Programming
