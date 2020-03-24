@@ -20,7 +20,7 @@ public:
     TreeNode *insert(TreeNode *head, int x)
     {
         TreeNode *node = newNode(x);
-        TreeNode *temp = NULL; // will be used to find the position of insertion!
+        TreeNode *temp = head; // will be used to find the position of insertion!
         TreeNode *parent_of_temp = NULL;
         while (temp)
         {
