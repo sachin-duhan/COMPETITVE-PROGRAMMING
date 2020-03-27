@@ -1,8 +1,0 @@
-You are given a matrix with N rows and M columns. Each cell is either dry or has water. We say that two cells are neighbours if they share one of their four sides. A pond is a maximal subset of cells containing water such that any cell is accessible from any other cell by moving only along neighbours. You should add water to exactly one cell in order to maximise the size of the pond.
-
-
-You are provided n numbers of array. You need to find the maximum length of biotonic subsequence. A subsequence is biotonic if it is first increasing and then decreasing or entirely increasing or decreasing. Please Note: the heights of the building in the elements should be strictly increasing and then strictly decreasing.
-
-There is a string consisting of only ‘x’ and ‘y’ as the characters. Perfectness of a string is described as the maximum length substring of equal characters. You have given a number K which denotes the maximum number of characters that you can change. Find the maximum perfectness that you can generate by changing no more than K characters of the string.
-
-find given suduko is valid or not
