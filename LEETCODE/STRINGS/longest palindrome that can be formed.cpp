@@ -21,7 +21,7 @@ int size_of_largest_palindrome(string s)
 }
 int main()
 {
-    string s = "abccccdd";
+    string s = "bbbab";
     cout << size_of_largest_palindrome(s) << endl;
     return 0;
 }
