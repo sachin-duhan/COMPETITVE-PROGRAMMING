@@ -16,6 +16,7 @@ vector<int> kWeakestRows(vector<vector<int>> &mat, int k)
         ans.push_back(q[q.size() - 1 - i].first);
     return ans;
 }
+
 int main()
 {
     vector<vector<int>> input{{1, 1, 0, 0, 0},
