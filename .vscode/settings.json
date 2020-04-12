@@ -17,6 +17,8 @@
         "valarray": "cpp",
         "cmath": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp"
     }
 }
