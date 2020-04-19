@@ -20,8 +20,8 @@ $ git clone https://github.com/sachin-duhan26/COMPETITVE-PROGRAMMING.git
 
 ## Contributing
 ```
-Please refer to each project's style for submitting better solutions and additions. In general, we follow the "fork-and-pull" Git workflow.
-
+Please refer to each project's style for submitting better solutions and additions. 
+In general, we follow the "fork-and-pull" Git workflow.
 ```
 - Fork the repo on GitHub
 - Clone the project to your own machine
@@ -29,8 +29,8 @@ Please refer to each project's style for submitting better solutions and additio
 - Push your work back up to your fork
 
 - Submit a Pull request so that I can review your changes
-```
 
+```
 NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 ```
 
