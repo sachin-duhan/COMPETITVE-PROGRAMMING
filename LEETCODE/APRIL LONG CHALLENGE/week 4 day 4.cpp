@@ -30,9 +30,20 @@ bool canJump(vector<int> &nums)
     return true;
 }
 
+bool canJump2(vector<int> &nums)
+{
+    int lastPos = nums.size() - 1;
+    for (int i = lastPos; i >= 0; i--)
+    {
+        if (i + nums[i] >= lastPos)
+            lastPos = i;
+    }
+    return lastPos == 0;
+}
+
 int main()
 {
-    vector<int> nums= {3,2,1,0,5};
+    vector<int> nums = {3, 2, 1, 0, 5};
     cout << canJump(nums) << endl;
     return 0;
 }
