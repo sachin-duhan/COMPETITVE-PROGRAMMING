@@ -11,6 +11,6 @@ public:
         for (char c : S)
             if (m.find(c) != m.end())
                 ans++;
-        return ans;
+        return ans; 
     }
 };
