@@ -69,3 +69,26 @@ public:
         return *ans.begin() % mod;
     }
 };
+
+class Solution2 {
+    vector<long long> sums;
+public:
+    int maxProduct(TreeNode* root) {
+        long long total = sum(root);
+        long long m = LLONG_MIN;
+        for (long long i : sums) {
+            long long prod = i * (total - i);
+            if (prod > m)
+                m = prod;
+        }
+        return (int)(m % 1000000007);
+    }
+    
+    int sum(TreeNode* node) {
+        if (!node)
+            return 0;
+        int n = node->val + sum(node->left) + sum(node->right);
+        sums.push_back(n);
+        return n;
+    }
+};
