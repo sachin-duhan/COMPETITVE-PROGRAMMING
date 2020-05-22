@@ -1,18 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
-void dfs(vector<vector<int>> arr, int i, int j)
-{
-}
 
 int countSquares(vector<vector<int>> &matrix)
 {
     int ans = 0;
-    int m = arr.size(), n = arr[0].size(), count = min(m, n);
-    // solving here!
+    int m = arr.size(), n = arr[0].size();
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+    for (int i = 1; i <= m; i++)
+        for (int j = 1; j <= n; j++)
+            if (matrix[i][j] == 1)
+                ans += dp[i][j] = min(dp[i - 1][j], min(dp[i - 1][j - 1], dp[i][j - 1])) + 1;
+    return ans;
 }
 
 int main()
 {
     vector<vector<int>> matrix{{0, 1, 1, 1}, {1, 1, 1, 1}, {0, 1, 1, 1}};
+    cout << countSquares(matrix) << endl;
     return 0;
 }
