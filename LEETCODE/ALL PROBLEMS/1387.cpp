@@ -10,37 +10,42 @@ public:
         std::cin.tie(nullptr);
         std::cout.tie(nullptr);
     }
-
-    int cal_pow(int a)
-    {
-        int ans = 0;
-        if (a == 1)
-            return ans;
-        while (ans != 1)
-        {
-            ans++;
-            if (a % 2 == 0)
-                a /= 2;
-            else
-                a = 3 * a + 1;
-        }
-        return ans;
-    }
-
+    vector<pair<int, int>> vals;
     int getKth(int lo, int hi, int k)
     {
-        if (lo == hi)
-            return lo;
-        vector<pair<int, int>> vals;
+        if (lo == 1 and hi == 1 and k == 1)
+        {
+            return 1;
+        }
+
         for (int i = lo; i <= hi; i++)
+            get_pow(i);
+
+        sort(vals.begin(), vals.end());
+
+        return vals[k - 1].second;
+    }
+
+    void get_pow(int i)
+    {
+
+        int index = i;
+        int count = 0;
+
+        while (i != 1)
         {
             if (i % 2 == 0)
-                vals.push_back({cal_pow(i), i});
+            {
+                i = i / 2;
+                count++;
+            }
             else
-                vals.push_back({cal_pow(i), i});
+            {
+                i = (i * 3) + 1;
+                count++;
+            }
         }
-        sort(vals.begin(), vals.end());
-        return vals[k - 1].second;
+        vals.push_back(make_pair(count, index));
     }
 };
 
