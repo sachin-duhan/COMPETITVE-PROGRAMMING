@@ -3,31 +3,53 @@ using namespace std;
 
 class Solution
 {
-private:
-    bool isError = false;
-
-    void dfs(int index, vector<int> r, vector<int> l, vector<bool> vis)
-    {
-        if (isError || index > r.size())
-            return;
-        if ((r[index] == -1 && l[index] == -1 && index < r.size() - 1) || vis[index])
-        {
-            isError = true;
-            return;
-        }
-        vis[index] = true;
-        dfs(r[index], r, l, vis);
-        dfs(l[index], r, l, vis);
-    }
-
 public:
     bool validateBinaryTreeNodes(int n, vector<int> &leftChild, vector<int> &rightChild)
     {
-        vector<bool> isVisited(n, false);
-        dfs(0, rightChild, leftChild, isVisited);
-        return !isError;
+        queue<int> q;
+        unordered_set<int> s;
+        if (leftChild.size() == 0)
+            return true;
+
+        for (int i = 0; i < leftChild.size(); i++)
+        {
+            if (leftChild[i] == -1 && rightChild[i] == -1)
+                continue;
+            if (leftChild[i] != -1)
+            {
+                s.insert(leftChild[i]);
+                q.push(leftChild[i]);
+            }
+            if (rightChild[i] != -1)
+            {
+                s.insert(rightChild[i]);
+                q.push(rightChild[i]);
+            }
+            break;
+        }
+        while (q.size() != 0)
+        {
+            int x = q.front();
+            q.pop();
+            if (s.count(leftChild[x]) || s.count(rightChild[x]))
+                return false;
+            if (leftChild[x] != -1)
+            {
+                s.insert(leftChild[x]);
+                q.push(leftChild[x]);
+            }
+            if (rightChild[x] != -1)
+            {
+                s.insert(rightChild[x]);
+                q.push(rightChild[x]);
+            }
+        }
+        if (s.size() != n - 1) // for forest
+            return false;
+        return true;
     }
 };
+
 int main()
 {
     Solution val;
