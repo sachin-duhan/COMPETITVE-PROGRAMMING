@@ -1,10 +1,13 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
-    string frequencySort(string s) {
-        if(s.length() < 2) return s;
+    string frequencySort(string s)
+    {
+        if (s.length() < 2)
+            return s;
         map<char, int> m;
         for (auto c : s)
             m[c]++;
@@ -15,11 +18,10 @@ public:
         while (!max_heap.empty())
         {
             for (int i = 0; i < max_heap.top().first; i++)
-                ans+= max_heap.top().second;        
+                ans += max_heap.top().second;
             max_heap.pop();
         }
 
         return ans;
     }
 };
-
