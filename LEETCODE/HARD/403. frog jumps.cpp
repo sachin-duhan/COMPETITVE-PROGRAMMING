@@ -4,6 +4,14 @@ using namespace std;
 class Solution
 {
 public:
+
+    Solution()
+    {
+        ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        std::cout.tie(nullptr);
+    }
+
     bool canCross(vector<int> &stones)
     {
         int N = stones.size();
