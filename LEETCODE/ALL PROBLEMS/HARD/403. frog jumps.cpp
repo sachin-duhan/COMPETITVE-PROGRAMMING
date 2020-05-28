@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class Solution
 {
 public:
@@ -27,6 +28,14 @@ public:
         return false;
     }
 };
+
+int main()
+{
+    vector<int> input{0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12};
+    Solution question;
+    cout << question.canCross(input) << endl;
+    return 0;
+}
 
 /*JAVA SOLUTION FOR THE SAME!*/
 
