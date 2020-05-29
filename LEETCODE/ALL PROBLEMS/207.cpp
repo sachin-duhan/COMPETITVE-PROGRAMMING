@@ -1,24 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-// approach one // wron answer!!
+
 class Solution
 {
 public:
-    bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
+    bool iscycle(vector<int> adj[], vector<int> &vis, int id)
     {
-        vector<int> colors(numCourses, -1);
-        for (auto val : prerequisites)
-        { // val is an array!
-            if (colors[val[0]] != -1)
+        if (vis[id] == 1)
+            return true;
+        if (vis[id] == 0)
+        {
+            vis[id] = 1;
+            for (auto edge : adj[id])
             {
-                if (colors[val[0]] != 0 || colors[val[1]] == 0)
-                    return false;
+                if (iscycle(adj, vis, edge))
+                    return true;
             }
-            else
-            {
-                colors[val[0]] = 0;
-                colors[val[1]] = 1;
-            }
+        }
+        vis[id] = 2;
+        return false;
+    }
+    bool canFinish(int n, vector<vector<int>> &pre)
+    {
+        vector<int> adj[n];
+        for (auto edge : pre)
+            adj[edge[1]].push_back(edge[0]);
+        vector<int> vis(n, 0);
+
+        for (int i = 0; i < n; i++)
+        {
+            if (iscycle(adj, vis, i))
+                return false;
         }
         return true;
     }
