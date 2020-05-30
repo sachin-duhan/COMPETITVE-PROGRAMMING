@@ -14,6 +14,7 @@ Following repo contains the solutions of the good interview question and some fa
 ## Installation
 
 Clone the GitHub Repository.
+
 ```
 $ git clone https://github.com/sachin-duhan26/COMPETITVE-PROGRAMMING.git
 ```
@@ -35,6 +36,7 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 ```
 
 # AUTHOR
+
 ```
 Name - Sachin Duhan
 Institute - Delhi Technological University
