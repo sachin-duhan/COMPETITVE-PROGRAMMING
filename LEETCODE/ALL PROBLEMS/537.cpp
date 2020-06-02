@@ -14,13 +14,13 @@ string complexNumberMultiply(string a, string b)
     c2 = b.substr(i + 1, b.size() - i - 2);
     int n = stoi(n1), m = stoi(n2);
     int c = stoi(c1), d = stoi(c2);
-    cout << n + m - c*d << "+" << c+d << "i" << endl;
-    return "";
+    string ans = to_string(n * m - c * d) + "+" + to_string(m * c + n * d) + "i";
+    return ans;
 }
 
 int main()
 {
     string s = "1+10i", t = "10+1i";
-    complexNumberMultiply(s, t);
+    cout <<complexNumberMultiply(s, t);
     return 0;
 }
