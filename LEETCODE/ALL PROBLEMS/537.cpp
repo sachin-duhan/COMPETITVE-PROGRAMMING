@@ -12,15 +12,15 @@ string complexNumberMultiply(string a, string b)
     while (b[i] != '+')
         n2 += b[i++];
     c2 = b.substr(i + 1, b.size() - i - 2);
-    
-    cout << n1 << " " << n2 << endl;
-    cout << c1 << " " << c2 << endl;
+    int n = stoi(n1), m = stoi(n2);
+    int c = stoi(c1), d = stoi(c2);
+    cout << n + m - c*d << "+" << c+d << "i" << endl;
     return "";
 }
 
 int main()
 {
-    string s = "-10+-100i";
-    complexNumberMultiply(s, s);
+    string s = "1+10i", t = "10+1i";
+    complexNumberMultiply(s, t);
     return 0;
 }
