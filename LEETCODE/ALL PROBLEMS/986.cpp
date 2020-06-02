@@ -16,10 +16,10 @@ vector<vector<int>> intervalIntersection(vector<vector<int>> &A, vector<vector<i
         else
         {
             ans.push_back({max(A[i][0], B[j][0]), min(A[i][1], B[j][1])});
-            if (i <= j)
+            if (A[i][1] < B[j][1])
                 i++;
             else
-                j++;
+                j += 1;
         }
     }
     return ans;
