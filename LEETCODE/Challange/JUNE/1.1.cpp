@@ -12,9 +12,15 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// approach two with shorter LOC!
 TreeNode *invert(TreeNode *root)
 {
-
+    if (!root)
+        return NULL;
+    TreeNode *left = invertTree(root->left), *right = invertTree(root->right);
+    root->right = left;
+    root->left = right;
+    return root;
 }
 
 // swapping approach!
