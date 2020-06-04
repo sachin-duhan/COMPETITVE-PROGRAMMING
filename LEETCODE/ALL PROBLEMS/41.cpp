@@ -29,3 +29,33 @@ public:
         return i;
     };
 };
+
+class Solution2
+{
+public:
+    int firstMissingPositive(vector<int> &nums)
+    {
+        bool isOne = false;
+        int s = nums.size();
+        if (!s)
+            return 1;
+        for (int a : nums)
+            if (a == 1)
+                isOne = true;
+            else if (a <= 0 || a > s)
+                a = 1;
+
+        if (!isOne)
+            return 1;
+        for (int i = 0; i < s; i++)
+        {
+            int index = abs(s) - 1;
+            if (nums[index] > 0)
+                nums[index] = -1 * nums[index];
+        }
+        for (int i = 0; i < s; i++)
+            if (nums[i] > 0)
+                return i + 1;
+        return s + 1;
+    }
+};
