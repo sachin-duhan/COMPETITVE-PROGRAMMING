@@ -1,0 +1,25 @@
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+RETURN (
+	# result variable will store ordered values of salaries in the form of table
+	# returned by the sub-query !
+    with result as 
+    (
+		# dense_rank() is used to rank the attributes of a table.
+		# since we need to rank values on the basis of "salary" so
+		# we speicfy "OVER" upon the ordered values of salary 
+		# and add myRank attribue to the result of this subquery 
+		
+        select salary, DENSE_RANK() over (order by salary desc) as myRank
+        from employee
+		
+    )
+	
+	# now from the result obtained by the sub-query above 
+	# we will match the rank with the required RANK
+	
+    select distinct salary from result 
+    where result.myRank = N
+	
+);
+END
