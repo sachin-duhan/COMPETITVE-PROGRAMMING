@@ -7,7 +7,6 @@ int solve(vector<int> satisfaction)
     int ans = 0;
     for (int i = 1; i <= satisfaction.size(); i++)
         ans += i * satisfaction[i - 1];
-    // cout << ans << endl;
     for (int i = 1; i <= satisfaction.size(); i++)
     {
         int temp = 0;
