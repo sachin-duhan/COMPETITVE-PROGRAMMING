@@ -44,6 +44,6 @@ bool solve(string s, string t)
 int main()
 {
     string s = "defabc", t = "abc";
-    cout << solve(s, t) << endl;
+    cout << (solve(s, t) ? "found" : "nopes") << endl;
     return 0;
 }
