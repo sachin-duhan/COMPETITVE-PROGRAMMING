@@ -22,9 +22,9 @@ Print the minimum number of turns.
 #include <bits/stdc++.h>
 using namespace std;
 
-long long find_min_turn(vector<long long> &nums)
+long long find_min_turn(vector<int> &nums)
 {
-    int ans = 0;
+    long long ans = 0;
     for (int i = 0; i < nums.size() - 1; i++)
         if (nums[i] > nums[i + 1]){
             ans += nums[i] - nums[i+1];
@@ -37,10 +37,10 @@ int main()
 {
     int _size;
     cin >> _size;
-    vector<long long> nums;
+    vector<int> nums;
     while (_size--)
     {
-        long long temp;
+        int temp;
         cin >> temp;
         nums.push_back(temp);
     }
