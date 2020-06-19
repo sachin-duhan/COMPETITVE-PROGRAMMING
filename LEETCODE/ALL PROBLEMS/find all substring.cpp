@@ -19,7 +19,7 @@ vector<string> sub_strings(string str)
 
 int main()
 {
-    string s = "hello";
+    string s = "banana";
     vector<string> answer = sub_strings(s);
     for (string s : answer)
         cout << s << endl;
