@@ -10,14 +10,18 @@ int main()
         vector<int> nums;
         for (char c : s)
             if (c != '+')
-                nums.push_back(c-48);
-        // for(auto a : nums) cout << a << " ";
-        // cout << endl;                    
+                nums.push_back(int(c) - 48);
         sort(nums.begin(), nums.end());
         string ans = "";
-        for (auto a : nums)
-            ans += a + "+";
+        for (int i = 0; i < nums.size(); i++)
+        {
+            ans += to_string(nums[i]);
+            if (i < nums.size() - 1)
+                ans += "+";
+        }
         cout << ans << endl;
-    } else cout << s << endl;
+    }
+    else
+        cout << s << endl;
     return 0;
 }
