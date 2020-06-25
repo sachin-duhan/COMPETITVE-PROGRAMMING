@@ -1,23 +1,19 @@
 #include <iostream>
 using namespace std;
 
-int input()
-{
-    int a;
-    cin >> a;
-    return a;
-}
-
-int solve(int b, int a)
-{
-    if (a < b) return b-a;
-    else return abs(a%b);
-}
-
 int main()
 {
-    int test = input();
+    int test;
+    cin >> test;
+    // cout << "====    =======" << endl;
     while (test--)
-        cout << solve(input(), input()) << endl;
+    {
+        int a, b;
+        cin >> a >> b;
+        if (a % b == 0)
+            cout << "0" << endl;
+        else
+            cout << b - (a % b) << endl;
+    }
     return 0;
 }
