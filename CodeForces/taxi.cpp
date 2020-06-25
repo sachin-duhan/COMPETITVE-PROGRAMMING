@@ -5,22 +5,23 @@ int main()
 {
     int n;
     cin >> n;
-    int arr[n];
+    vector<int> groups(4, 0);
     for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    int ans = 0, i = 0;
-    sort(arr,arr + n);
-    // while(i < n) {
-    //     int curr = 0;
-    //     bool is_counted = false;
-    //     while(curr <= 4 && i < n){
-    //         if(curr + arr[i] > 4) break;
-    //         if(curr + arr[i] < 4) {curr+=arr[i]; i++;}
-    //         else if(curr == 4) {ans++; is_counted = true; break;}
-    //     }
-    //     if(!is_counted) { ans++; i++;}
-    // }
-    
-    cout << ans << endl;
+    {
+        int temp;
+        cin >> temp;
+        groups[temp - 1] += temp;
+    }
+    int ans = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        ans += groups[i] / 4;
+        groups[i] %= 4;
+        if (i == 0 && groups[i] > 0)
+            groups[3 - groups[i]] += groups[i];
+        if (i >= 1 && groups[i] > 0)
+            ans++;
+        cout << ans << endl;
+    }
     return 0;
 }
