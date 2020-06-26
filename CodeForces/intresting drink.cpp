@@ -4,10 +4,10 @@ int main()
 {
     int arr_size;
     cin >> arr_size;
-    int arr[arr_size];
+    vector<int> arr(arr_size, 0);
     for (int i = 0; i < arr_size; ++i)
         cin >> arr[i];
-    sort(arr, arr + arr_size);
+    sort(arr.begin(), arr.end());
     int t;
     cin >> t;
     // cout << "-------------------" << endl;
@@ -21,15 +21,8 @@ int main()
             cout << arr_size << endl;
         else
         {
-            int ans = 0;
-            for (int i = 0;i< arr_size; i++)
-            {
-                if (temp >= arr[i])
-                    ans++;
-                else
-                    break;
-            }
-            cout << ans << endl;
+            auto itr = upper_bound(arr.begin(), arr.end(), temp) - arr.begin();
+            cout << itr << endl;
         }
     }
     return 0;
