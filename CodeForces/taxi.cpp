@@ -17,13 +17,18 @@ int main()
     {
         ans += groups[i] / 4;
         groups[i] %= 4;
-        if (i == 0 && groups[i] == 3)
+        if (i == 0 && groups[i] == 1)
+            groups[2]++;
+        else if (i == 0 && groups[i] == 2)
+            groups[1] += 2;
+        else if (i == 0 && groups[i] == 3)
         {
             groups[1] += 2;
             groups[2]++;
-        } else if (i >= 1 && groups[i] > 0)
+        }
+        else if (i >= 1 && groups[i] > 0)
             ans++;
+        cout << ans << endl;
     }
-    cout << ans << endl;
     return 0;
 }
