@@ -26,7 +26,6 @@ typedef vector<vi> vvi;
 
 #define LSOne(S) (S & (-S))
 #define isBitSet(S, i) ((S >> i) & 1)
-
 int input()
 {
     int temp;
@@ -34,12 +33,19 @@ int input()
     return temp;
 }
 
+int find_rotation(vi nums)
+{
+    int n = nums.size();
+    loop(i, 0, n - 1) if (nums[i] > nums[i + 1]) return i + 1;
+    return -1;
+}
+
 void solve()
 {
     int n = input();
     vi nums(n);
-    loop(i, 0, n) cin >> nums[i];
-    
+    loop(i, 0, n) nums[i] = input();
+    cout << find_rotation(nums) << endl;
 }
 
 int main()
