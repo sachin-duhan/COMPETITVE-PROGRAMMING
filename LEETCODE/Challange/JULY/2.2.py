@@ -12,8 +12,7 @@ class Solution:
             if depth not in first_col_index_table:
                 first_col_index_table[depth] = col_index
 
-            max_width = max(max_width, col_index -
-                            first_col_index_table[depth] + 1)
+            max_width = max(max_width, col_index - first_col_index_table[depth] + 1)
 
             # Preorder DFS, with the priority on the left child
             DFS(node.left, depth+1, 2*col_index)
