@@ -1,80 +1,102 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-class Trie
-{
+
+class Solution {
 public:
-    Trie *children[26];
-    bool isEnd;
-
-    Trie()
-    {
-        for (auto &c : children)
-            c = NULL;
-    }
-
-    ~Trie()
-    {
-        for (auto &c : children)
-            delete c;
-    }
-
-    void insert(string s)
-    {
-        Trie *curr = this;
-        for (char c : s)
-        {
-            if (!(curr->children[c - 'a']))
-                curr->children[c - 'a'] = new Trie();
-            curr = curr->children[c - 'a'];
+    class TrieNode {
+    public:
+        TrieNode* children[26];
+        bool word;
+        
+        TrieNode() {
+            word=false;
+            for(int i=0;i<26;i++) children[i]=nullptr;
         }
-        curr->isEnd = true;
-    }
-};
-
-class Solution
-{
-    int m, n;
-    bool dfs(string word, int k, vector<vector<char>> board, int i, int j)
-    {
-        if (k >= word.length())
-            return true;
-        if (i < m && i >= 0 && j < n && j >= 0 && board[i][j] == word[k])
+        
+        TrieNode* get(char c)
         {
-            bool isFound = false;
-            char temp = board[i][j];
-            board[i][j] = '!';
-            int dx[] = {1, -1, 0, 0}, dy[] = {0, 0, 1, -1};
-            for (int i = 0; i < 4; i++)
-            {
-                if (isFound)
-                    return isFound;
-                isFound = dfs(word, k + 1, board, i + dx[i], j + dx[j]);
-            }
-            board[i][j] = temp;
-            return isFound;
+            return children[c-'a'];
         }
-        return false;
-    }
-
-    bool findWord(string word, vector<vector<char>> board)
-    {
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < n; j++)
-                if (word[0] == board[i][j])
-                    return dfs(word, 0, board, 0, 0);
-        return false;
-    }
-
-public:
-    vector<string> findWords(vector<vector<char>> &board, vector<string> &words)
-    {
-        m = board.size(), n = m == 0 ? 0 : board[0].size();
+        
+        TrieNode* put(char c)
+        {
+            TrieNode* node=new TrieNode();
+            children[c-'a']=node;
+            return node;
+        }
+    };
+    
+    TrieNode* trie;
+    int dir[4][2]={{0,1},{0,-1},{1,0},{-1,0}};
+    int m;
+    int n;
+    
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        m=board.size();
+        n=board[0].size();
+        buildTrie(words);
+        
         vector<string> ans;
-        if (words.size() == 0 || m == 0)
-            return {};
-        for (auto a : words)
-            if (findWord(a, board))
-                ans.push_back(a);
+        string str;
+        vector<bool> visited(m*n,false);
+        for(int r=0;r<m;r++)
+        {
+            for(int c=0;c<n;c++)
+            {
+                str="";                
+                backtrack(r,c,board,visited,str,trie,ans);
+            }
+        }
+        
         return ans;
+    }
+    
+    void buildTrie(vector<string>& words)
+    {
+        trie=new TrieNode();
+        for(auto& word:words)
+        {
+            TrieNode* cur=trie;
+            for(char c:word)
+            {
+                TrieNode* node=cur->get(c);
+                if(node) cur=node;
+                else cur=cur->put(c);
+            }
+            cur->word=true;
+        }
+    }
+    
+    void backtrack(int r,int c,vector<vector<char>>& board,vector<bool>& visited,string& str,TrieNode* node,vector<string>& ans)
+    {
+        if(node==nullptr)
+            return;
+        
+        TrieNode* cur=node->get(board[r][c]);
+        if(cur==nullptr)
+            return;
+        
+        visited[r*n+c]=true;
+        str.push_back(board[r][c]);
+        
+        if(cur->word)
+        {
+            ans.push_back(str);
+            cur->word=false;
+        }
+        
+        for(int d=0;d<4;d++)
+        {
+            int nr=r+dir[d][0];
+            int nc=c+dir[d][1];
+            int next=nr*n+nc;
+            if(nr>=0 && nr<m && nc>=0 && nc<n && !visited[next])
+            {
+                backtrack(nr,nc,board,visited,str,cur,ans);
+            }
+        }
+        
+        visited[r*n+c]=false;
+        str.pop_back();
     }
 };
