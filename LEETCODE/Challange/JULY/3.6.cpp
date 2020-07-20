@@ -21,10 +21,10 @@ public:
             if (temp->next->val == val)
                 temp->next = temp->next->next;
             else
-                temp = temp->next ? temp->next : NULL;
+                temp = temp->next;
         }
         if (temp->val == val)
-            temp->next = NULL;
+            temp = NULL;
         return head;
     }
 };
