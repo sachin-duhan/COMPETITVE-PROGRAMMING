@@ -15,17 +15,16 @@ class Solution
 public:
     ListNode *removeElements(ListNode *head, int val)
     {
-        ListNode *temp = head, *prev = head;
+        ListNode *temp = head;
         while (temp)
         {
-            if (temp->val == val)
-            {
-                prev->next = temp->next ? temp->next : NULL;
+            if (temp->next->val == val)
+                temp->next = temp->next->next;
+            else
                 temp = temp->next ? temp->next : NULL;
-            }
-            prev = temp ? temp : NULL;
-            temp = temp->next ? temp->next : NULL;
         }
+        if (temp->val == val)
+            temp->next = NULL;
         return head;
     }
 };
