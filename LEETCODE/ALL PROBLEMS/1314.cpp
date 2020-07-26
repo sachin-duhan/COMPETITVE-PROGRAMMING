@@ -6,14 +6,15 @@ class Solution
     int m, n;
 
 public:
-    int dfs(vector<vector<int>> mat, int i, int j, int curr, int k)
+    int dfs(vector<vector<int>> mat, vector<vector<bool>> &vis, int i, int j, int curr, int k)
     {
-        if (k < 0 || i + k > m || j + k > n || i < 0 || j < 0 || i >= m || j >= m)
+        if (k < 0 || i < 0 || j < 0 || i >= m || j >= m || vis[i][j])
             return 0;
+        vis[i][j] = true;
         int dx[] = {1, -1, 0, 0}, dy[] = {0, 0, -1, 1};
-        curr += mat[i][j];
         for (int l = 0; l < 4; l++)
-            curr += dfs(mat, i + dx[l], j + dy[l], curr, k - 1);
+            curr += dfs(mat, vis, i + dx[l], j + dy[l], curr, k - 1);
+        curr += mat[i][j];
         return curr;
     }
 
@@ -33,7 +34,8 @@ public:
         {
             for (int j = 0; j < n; j++)
             {
-                ret[i][j] = dfs(mat, i, j, 0, K);
+                vector<vector<bool>> vis(m, vector<bool>(n, false));
+                ret[i][j] = dfs(mat, vis, i, j, 0, K);
             }
         }
         return ret;
