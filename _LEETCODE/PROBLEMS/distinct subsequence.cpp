@@ -27,3 +27,24 @@ public:
         return ans;
     }
 };
+
+class Solution
+{
+public:
+    int numDistinct(string s, string t)
+    {
+        int n = s.size(), m = t.size();
+        long long int dp[m + 1];
+        memset(dp, 0, sizeof(dp));
+        dp[0] = 1;
+        for (int i = 1; i <= n; i++)
+            for (int j = m; j > 0; j--)
+            {
+                if (s[i - 1] == t[j - 1])
+                {
+                    dp[j] = dp[j - 1] + dp[j];
+                }
+            }
+        return dp[m];
+    }
+};
