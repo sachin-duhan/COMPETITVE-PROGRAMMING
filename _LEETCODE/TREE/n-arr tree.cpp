@@ -29,4 +29,21 @@ public:
         _preorder_helper(root, ans);
         return ans;
     }
+
+    vector<int> preorder_itreative(Node *root)
+    {
+        vector<int> ans;
+        stack<Node *> s;
+        s.push(root);
+        while (!s.empty())
+        {
+            Node *curr = s.top();
+            s.pop();
+
+            ans.push_back(curr->val);
+            for (auto itr = curr->children.rbegin(); itr != curr->children.rend(); itr++)
+                s.push(*itr);
+        }
+        return ans;
+    }
 };
