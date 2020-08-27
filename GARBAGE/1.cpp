@@ -30,5 +30,6 @@ abababab
 int main()
 {
     string s = "cabcdea";
+    cout << '0' - '0' << endl;
     return 0;
 }
