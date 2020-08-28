@@ -32,8 +32,8 @@ public:
                 dir.push(str);
         }
         cout << endl;
- 
-       while (!dir.empty())
+
+        while (!dir.empty())
         {
             cout << dir.top() << "/";
             dir.pop();
