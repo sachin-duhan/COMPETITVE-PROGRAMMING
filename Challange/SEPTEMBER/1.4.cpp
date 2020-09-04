@@ -6,36 +6,21 @@ class Solution
 public:
     vector<int> partitionLabels(string S)
     {
-        map<char, pair<int, int>> m;
+        vector<int> chars(26, 0);
+        for (int i = 0; i < S.length(); i++)
+            chars[S[i] - 'a'] = i;
+        int j = 0, anchor = 0;
+        vector<int> ans;
         for (int i = 0; i < S.length(); i++)
         {
-            if (m.find(S[i]) != m.end())
-                m[S[i]].second = i;
-            else
-                m[S[i]] = {i, i};
-        }
-        // sort(m.begin(), m.end(), [](auto &a, auto &b) { return a.second->second < b.second->second; });
-        vector<int> range;
-        int low = -1, high = -1;
-        for (auto a : m)
-        {
-            if (a.second.first > high || a.second.second < low)
+            j = max(j, chars[S[i] - 'a']);
+            if (i == j)
             {
-                range.push_back(high - low + 1);
-                high = a.second.second;
-                low = a.second.first;
-            }
-            else
-            {
-                low = min(low, a.second.first);
-                high = max(high, a.second.second);
+                ans.push_back(i - anchor + 1);
+                anchor = i + 1;
             }
         }
-        range.push_back(high - low + 1);
-        range.erase(range.begin());
-        for (auto a : m)
-            cout << a.first << " -> " << a.second.first << " to " << a.second.second << endl;
-        return range;
+        return ans;
     }
 };
 
