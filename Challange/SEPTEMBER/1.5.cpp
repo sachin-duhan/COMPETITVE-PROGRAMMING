@@ -40,3 +40,26 @@ int main()
 {
     return 0;
 }
+
+// entering jugaad
+class Solution2
+{
+    vector<int> ans;
+    void helper(TreeNode *root)
+    {
+        if (!root)
+            return;
+        ans.push_back(root->val);
+        helper(root->left);
+        helper(root->right);
+    }
+
+public:
+    vector<int> getAllElements(TreeNode *root1, TreeNode *root2)
+    {
+        helper(root1);
+        helper(root2);
+        sort(ans.begin(), ans.end());
+        return ans;
+    }
+};
