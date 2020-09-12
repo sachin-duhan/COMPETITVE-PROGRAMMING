@@ -14,3 +14,6 @@ class Solution:
                 non_zeros = np.sum(A * kernel)
                 max_overlaps = max(max_overlaps, non_zeros)
         return max_overlaps
+
+# to get the list of files that has been chnaged!
+# git ls-files --other --modified --exclude-standard
