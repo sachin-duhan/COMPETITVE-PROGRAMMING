@@ -17,6 +17,21 @@ public:
     }
 };
 
+class Solution
+{
+public:
+    int Fun(vector<int> &nums, int index)
+    {
+        if (index >= nums.size())
+            return 0;
+        return max(nums[index] + Fun(nums, index + 2), Fun(nums, index + 1));
+    }
+    int rob(vector<int> &nums)
+    {
+        return Fun(nums, 0);
+    }
+};
+
 
 /*===== TREENODE CODE =====
 struct TreeNode {
