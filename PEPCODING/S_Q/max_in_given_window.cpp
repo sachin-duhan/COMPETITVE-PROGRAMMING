@@ -23,8 +23,6 @@ struct Node {
 };
 */
 
-
-
 /// brootforce approach!!
 vector<int> max_in_given_window(vector<int> nums, int k)
 {
@@ -44,6 +42,35 @@ vector<int> max_in_given_window(vector<int> nums, int k)
     return ans;
 }
 
+// better approach;
+vector<int> max_in_given_window(vector<int> nums, int k)
+{
+    int n = nums.size();
+    if (k >= n)
+        return {*max_element(nums.begin(), nums.end())};
+    else if (k == 0)
+        return nums;
+    vector<int> ans;
+    map<int, int, greater<int>> m;
+    for (size_t i = 0; i < k; i++)
+        m[nums[i]] = i;
+    int i = 1, j = k - 1;
+    auto itr = m.begin();
+    ans.push_back(itr->first);
+    while (j++ < n)
+    {
+        i++;
+        auto itr = m.begin();
+        while (itr->second < i)
+        {
+            m.erase(itr);
+            m[nums[j]] = j;
+            itr = m.begin();
+        }
+        ans.push_back(itr->first);
+    }
+    return ans;
+}
 
 int main()
 {
