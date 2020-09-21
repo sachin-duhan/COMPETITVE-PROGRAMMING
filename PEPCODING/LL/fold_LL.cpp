@@ -33,6 +33,17 @@ void print(const Node *head)
 
 Node *fold(Node *head)
 {
+    vector<Node *> nodes;
+    Node *temp = head;
+    while (temp)
+    {
+        nodes.push_back(temp);
+        temp = temp->next;
+    }
+    int n = nodes.size();
+
+    for (size_t i = 0; i < n / 2; i++)
+        nodes[i]->next = nodes[n - i];
     return head;
 }
 
@@ -40,7 +51,7 @@ int main()
 {
     Node *head = insert({1, 2, 3, 4, 5, 6, 7, 8});
     // print(head);
-    fold(head);
-    print(head);
+    auto temp = fold(head);
+    print(temp);
     return 0;
 }
