@@ -27,6 +27,29 @@ public:
     }
 };
 
+class Solution2
+{
+public:
+    bool carPooling(vector<vector<int>> &trips, int capacity)
+    {
+        int passenger[1001] = {0};
+        int index = 0;
+        for (int i = 0; i < trips.size(); i++)
+        {
+            passenger[trips[i][1]] += trips[i][0];
+            passenger[trips[i][2]] -= trips[i][0];
+            index = max(index, trips[i][2]);
+        }
+        for (int i = 1; i <= index; i++)
+        {
+            passenger[i] += passenger[i - 1];
+            if (passenger[i] > capacity)
+                return false;
+        }
+        return true;
+    }
+};
+
 int main()
 {
     vector<vector<int>> grips = {{1, 1, 2}, {2, 2, 4}, {3, 4, 5}, {2, 3, 5}, {4, 3, 4}};
