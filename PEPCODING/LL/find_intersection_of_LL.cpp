@@ -31,9 +31,29 @@ void print(const Node *head)
     cout << head->val << " ";
 }
 
+int LLsize(Node *head)
+{
+    if (!head)
+        return 0;
+    return LLsize(head->next) + 1;
+}
+
 Node *intersect(Node *one, Node *two)
 {
-    // solve;
+    int n = LLsize(one), m = LLsize(two);
+    int delta = abs(n - m);
+    if (n > m)
+        for (size_t i = 0; i < delta; i++)
+            one = one->next;
+    else
+        for (size_t i = 0; i < delta; i++)
+            two = two->next;
+    while (one != two)
+    {
+        one = one->next;
+        two = two->next;
+    }
+    return one;
 }
 
 int main()
