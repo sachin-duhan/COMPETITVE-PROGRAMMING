@@ -42,11 +42,23 @@ vector<int> majorityElement2(vector<int> nums)
     return ans;
 }
 
+vector<int> majorityElement3(vector<int> nums)
+{
+    int benchmark = ceil(nums.size() / 3);
+    map<int, int> m;
+    vector<int> ans;
+    for (int a : nums)
+        m[a]++;
+    for (auto a : m)
+        if (a.second > benchmark)
+            ans.push_back(a.first);
+    return ans;
+}
 
 int main()
 {
     vector<int> val = {1, 1, 1, 2, 2, 3, 3, 3};
-    auto tmp = majorityElement2(val);
+    auto tmp = majorityElement3(val);
     for(auto a : tmp) cout << a << " ";
     cout << endl;
     return 0;
