@@ -14,18 +14,16 @@ class Generic_Tree
 {
 public:
     TreeNode *root;
-
-    Generic_Tree(int val) { this->root->val = val; };
     Generic_Tree(vector<int> tree)
     {
         stack<TreeNode *> s;
         for (auto val : tree)
         {
-            TreeNode *temp = new TreeNode(val);
-            if (temp->val == -1)
+            if (val == -1)
                 s.pop();
             else
             {
+                TreeNode *temp = new TreeNode(val);
                 if (s.empty())
                     this->root = temp;
                 else
@@ -34,20 +32,24 @@ public:
             }
         }
     }
-
-    void print(TreeNode *root)
-    {
-        if (!root)
-            return;
-        string level = root->val + " -> ";
-        for (auto child : root->children)
-            level += child->val + ", ";
-        for (auto child : root->children)
-            this->print(child);
-    }
 };
+
+void print(TreeNode *root)
+{
+    if (!root)
+        return;
+    string level = to_string(root->val) + " -> ";
+    for (auto child : root->children)
+        level += to_string(child->val) + ", ";
+    cout << level << endl;
+    for (auto child : root->children)
+        print(child);
+}
 
 int main()
 {
+    vector<int> tree = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 170, -1, -1, -1};
+    Generic_Tree mtree(tree);
+    print(mtree.root);
     return 0;
 }
