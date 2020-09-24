@@ -66,13 +66,31 @@ void print(TreeNode *root)
 
 void print_zig_zig(TreeNode *root)
 {
-    queue<TreeNode *> q;
-    q.push(root);
+    queue<pair<TreeNode *, int>> q;
+    q.push({root, 1});
     bool flag = false;
+    int last = 1;
     while (!q.empty())
     {
-        // will do this  later!
+        auto foq = q.front().first;
+        int level = q.front().second;
+        q.pop();
+        if (level > last)
+        {
+            last = level;
+            flag = !flag;
+        }
+        cout << foq->val << " ";
+        auto children = foq->children;
+        int n = children.size();
+        if (flag)
+            for (int i = 0; i < n; i++)
+                q.push({children[i], level + 1});
+        else
+            for (int i = n - 1; i >= 0; i--)
+                q.push({children[i], level + 1});
     }
+    cout << endl;
 }
 
 int tree_max(TreeNode *root, int &ans)
@@ -87,8 +105,6 @@ int main()
 {
     vector<int> tree = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 170, -1, -1, -1};
     Generic_Tree mtree(tree);
-    cout << mtree.size() << endl;
-    int dummy = INT_MIN;
-    cout << tree_max(mtree.root, dummy) << endl;
+    print_zig_zig(mtree.root);
     return 0;
 }
