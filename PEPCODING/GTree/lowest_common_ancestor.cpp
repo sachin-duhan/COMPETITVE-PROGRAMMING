@@ -67,17 +67,22 @@ vector<int> find_path(TreeNode *root, int num)
 int find_common_ancestors(TreeNode *root, int num1, int num2)
 {
     vector<int> path1 = find_path(root, num1), path2 = find_path(root, num2);
-    int n = min(path1.size(), path2.size());
-    for (int i = 0; i < n; ++i)
-        if (path1[i] == path2[i])
-            return path1[i];
-    return root->val;
+    int i = path1.size() - 1, j = path2.size() - 1;
+    while (i >= 0 && j >= 0 && path1[i] == path2[j])
+    {
+        i--;
+        j--;
+    }
+    if (i == -1)
+        return path1[i++];
+    return path1[i];
+    return;
 }
 
 int main()
 {
     vector<int> tree = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 170, -1, -1, -1};
     Generic_Tree mtree(tree);
-    
+
     return 0;
 }
