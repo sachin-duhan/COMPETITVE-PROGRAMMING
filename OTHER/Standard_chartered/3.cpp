@@ -23,7 +23,8 @@ int helper(int u, vector<int> nums)
     for (int i = 0; i < nums.size(); i++)
     {
         int mask = get_binary(nums[i]);
-        dp[u] = max(max(0, dp[u ^ mask]) + nums[i], dp[u]);
+        if ((mask | u) == u)
+            dp[u] = max(max(0, dp[u ^ mask]) + nums[i], dp[u]);
     }
     return dp[u];
 }
@@ -37,4 +38,3 @@ int solve(vector<int> nums)
         ans = max(ans, helper(i, nums));
     return ans;
 }
-
