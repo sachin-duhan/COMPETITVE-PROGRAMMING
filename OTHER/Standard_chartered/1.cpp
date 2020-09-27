@@ -12,6 +12,8 @@ int main()
         if (n % i == 0)
             factors.push_back(i);
     }
+    factors.push_back(n);
+    // .. proceess!!
     cout << accumulate(factors.begin(), factors.end(), 0) << endl;
-        return 0;
+    return 0;
 }
