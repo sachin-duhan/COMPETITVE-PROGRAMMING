@@ -1,8 +1,10 @@
-#interview question
+# Coding round question for SC
 
-// sum of factors of a number
-valid the ipv4 address
-Mobile Numeric Keypad Problem
-// The first problem is to find a character with a maximum frequency in the string
-// Maximum subset-sum such that no two elements in set have the same digit in them
-
+1. [x] - Sum of factors of a number
+2. [x] - sub array sum equal to k
+3. [x] - Maximum subset-sum such that no two elements in set have the same digit in them.
+4. [x] - The first problem is to find a character with a maximum frequency in the string.
+5. [x] - Move all negative numbers to beginning and positive to end with constant extra space.
+6. [ ] - Mobile Numeric Keypad Problem.
+7. [ ] - Valid the ipv4 address.
+8. [ ] - print all prime factors of a given number
