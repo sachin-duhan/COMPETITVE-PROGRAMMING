@@ -32,16 +32,22 @@ public:
             }
         }
     }
-    int maxSumSubTree_helper(TreeNode* root, int &ans){
-        int sum = 0;
-        for(auto child : root->children){
+    int maxSumSubTree_helper(TreeNode *root, int &ans)
+    {
+        int sum = root->val;
+        ans = max(ans, sum);
+        for (auto child : root->children)
+        {
             int sts = maxSumSubTree_helper(child, ans);
             ans = max(ans, sts);
+            sum += sts;
         }
-        return sum;        
+        ans = max(ans, sum);
+        return sum;
     }
 
-    int maxSumSubTree(){
+    int maxSumSubTree()
+    {
         int tmp = INT_MIN;
         maxSumSubTree_helper(root, tmp);
         return tmp;
