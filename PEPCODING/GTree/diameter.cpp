@@ -57,6 +57,7 @@ public:
 
     int diameter()
     {
+        return diameter_helper(root);
     }
 };
 
