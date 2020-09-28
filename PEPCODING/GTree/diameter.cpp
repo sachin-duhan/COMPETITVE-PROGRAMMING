@@ -41,7 +41,7 @@ public:
         return 1 + sth;
     }
 
-    int diameter_helper(TreeNode *root)
+    int diameter_helper(TreeNode *root,int &dia)
     {
         int mxd = 0, smxd = 0;
         for(auto child : root->children){
@@ -50,14 +50,18 @@ public:
                 smxd = mxd;
                 mxd = sth;
             }
-            if(sth > smxd && sth < mxd) smxd = sth;
+            else if(sth > smxd) smxd = sth;
         }
+        int cand = mxd + smxd + 2;
+        dia = max(dia,cand);
         return mxd + smxd + 1;
     }
 
     int diameter()
     {
-        return diameter_helper(root);
+        int dia;
+        diameter_helper(root,dia);
+        return dia;
     }
 };
 
