@@ -27,7 +27,11 @@ int pow(int m, int n)
 {
     if (n == 0)
         return 1;
-    return m * pow(m, n - 1);
+    int temp = pow(m, n / 2);
+    if (n % 2 == 0)
+        return temp * temp;
+    else
+        return temp * temp * m;
 }
 
 int main()
