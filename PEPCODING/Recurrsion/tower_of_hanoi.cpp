@@ -23,20 +23,16 @@ struct Node {
 };
 */
 
-typedef int long long;
-int pow(int m, int n)
+void tower_of_hanoi(int n, char a = 'A', char b = 'B', char c = 'C')
 {
     if (n == 0)
-        return 1;
-    int temp = pow(m, n / 2);
-    if (n % 2 == 0)
-        return temp * temp;
-    else
-        return temp * temp * m;
+        return;
+    tower_of_hanoi(n - 1, a, c, b);
+    cout << n << " [ " << a << " -> " << b << " ] " << endl;
+    tower_of_hanoi(n - 1, c, b, a);
 }
-
 int main()
 {
-    cout << pow(3, 3) << endl;
+    tower_of_hanoi(3);
     return 0;
 }
