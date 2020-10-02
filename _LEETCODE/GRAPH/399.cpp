@@ -6,38 +6,42 @@ using namespace std;
 class Solution
 {
 public:
-    vector<double> calcEquation(vector<vector<string>> &equations, vector<double> &values, vector<vector<string>> &queries)
+    unordered_map<string, unordered_map<string, double>> mp;
+    unordered_set<string> visited;
+
+    double dfs(string src, string dst, double p)
     {
-        map<pair<string, string>, double> m;
-        map<string, int> vars;
-        int n = equations.size();
-        for (int i = 0; i < n; i++)
+        if (mp.find(src) == mp.end() or mp.find(dst) == mp.end())
+            return -1;
+        if (src == dst)
+            return p;
+        double k = -1;
+        visited.insert(src);
+        for (auto x : mp[src])
         {
-            string a = equations[i][0], b = equations[i][1];
-            m[{a, b}] = values[i]; // {a,b} = make_pair(a.b);
-            m[{b, a}] = 1 / values[i];
-            vars[a]++;
-            vars[b]++;
+            if (visited.find(x.first) == visited.end())
+                k = dfs(x.first, dst, p * x.second);
+            if (k != -1)
+                return k;
         }
-        vector<double> ans;
-        for (auto query : queries)
+        return -1.0;
+    }
+
+    vector<double> calcEquation(vector<vector<string>> &eq, vector<double> &val, vector<vector<string>> &q)
+    {
+        vector<double> res;
+        for (int i = 0; i < eq.size(); i++)
         {
-            auto a = query[0], b = query[1];
-            if (!vars[a] || !vars[b])
-                ans.push_back(-1);
-            else if (m[{a, b}])
-                ans.push_back(m[{a, b}]);
-            else if (m[{b, a}])
-                ans.push_back(m[{b, a}]);
-            else if (a == b)
-                ans.push_back(1);
-            else
-            {
-                // some graph logic should work here!!
-                
-            }
+            mp[eq[i][0]][eq[i][1]] = val[i];
+            mp[eq[i][1]][eq[i][0]] = 1 / val[i];
         }
-        return ans;
+        for (int i = 0; i < q.size(); i++)
+        {
+            visited.clear();
+            double k = dfs(q[i][0], q[i][1], 1.0);
+            res.push_back(k);
+        }
+        return res;
     }
 };
 
