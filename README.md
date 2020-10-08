@@ -35,6 +35,9 @@ In general, we follow the "fork-and-pull" Git workflow.
 NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 ```
 
+## UPDATE
+More leetcode solutions can be found [here](https://github.com/sachin-duhan26/leetcode).
+
 # AUTHOR
 
 ```
