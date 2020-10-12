@@ -88,10 +88,34 @@ public:
         this->sudoku = grid;
     }
 
-    void solve(vector<vector<int>> &grid)
+    vector<vector<int>> solve()
     {
         _sudoku_solve_helper(0, 0);
+        return this->sudoku;
     }
 };
 
-int main() {}
+int main()
+{
+    vector<vector<int>> nums = {
+        {9, 0, 0, 1, 2, 0, 0, 0, 0},
+        {4, 0, 0, 2, 3, 0, 0, 0, 0},
+        {0, 0, 0, 3, 4, 0, 0, 1, 0},
+        {0, 0, 0, 4, 5, 0, 0, 0, 0},
+        {0, 0, 0, 5, 6, 0, 0, 0, 0},
+        {0, 0, 0, 6, 7, 0, 0, 0, 4},
+        {4, 0, 0, 7, 8, 0, 0, 0, 0},
+        {0, 0, 0, 8, 9, 0, 0, 0, 0},
+        {0, 0, 0, 9, 1, 0, 0, 3, 0},
+    };
+    Sudoku s(nums);
+    auto solved = s.solve();
+    for (auto a : solved)
+    {
+        for (auto val : a)
+            cout << val << " ";
+        cout << endl;
+    }
+
+    return 0;
+}
