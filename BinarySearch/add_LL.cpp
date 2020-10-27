@@ -51,5 +51,17 @@ LLNode *solve(LLNode *l0, LLNode *l1)
 
 int main()
 {
+    LLNode *temp = new LLNode(2);
+    temp->next = new LLNode(3);
+
+    LLNode *temp2 = new LLNode(8);
+    temp2->next = new LLNode(9);
+
+    auto sol = solve(temp, temp2);
+    while (sol)
+    {
+        cout << sol->val << " ";
+        sol = sol->next;
+    }
     return 0;
 }
