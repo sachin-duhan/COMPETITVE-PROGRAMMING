@@ -33,28 +33,20 @@ int findLongestFromACell(int i, int j, int mat[n][n], int dp[n][n])
     return dp[i][j] = max(x, max(y, max(z, max(w, 1))));
 }
 
-// Returns length of the longest path beginning with any cell
 int finLongestOverAll(int mat[n][n])
 {
     int result = 1; // Initialize result
-
-    // Create a lookup table and fill all entries in it as -1
     int dp[n][n];
     memset(dp, -1, sizeof dp);
-
-    // Compute longest path beginning from all cells
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
             if (dp[i][j] == -1)
                 findLongestFromACell(i, j, mat, dp);
-
-            // Update result if needed
             result = max(result, dp[i][j]);
         }
     }
-
     return result;
 }
 
