@@ -18,6 +18,20 @@ int helper(const string a,const string b, int i, int j){
     return max(helper(a,b,i-1,j),helper(a,b,i,j-1));
 }
 
+int solve_dp(string a, string b) {
+    int m = a.length(), n = b.length();
+    vector<vector<int>> dp(m+1,vector<int>(n+1,0));
+    for(int i=1; i<=m; i++){
+        for(int j = 1; j <= n; j++){
+            if(a[i-1] == b[j-1]) dp[i][j] = dp[i-1][j-1] + 1;
+            else {
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+    }
+    return dp[m][n];
+}
+
 int solve(string a, string b) {
     if(a == b) return a.length();
     return helper(a,b,a.length()-1,b.length()-1);
