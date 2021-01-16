@@ -24,5 +24,10 @@ struct Node {
 */
 
 int main(){
+    vector<int> sachin(10,1);
+    for (int i = 0; i < sachin.size(); i++)
+    {
+        cout << sachin[i] << endl;
+    }
     return 0;
 }
