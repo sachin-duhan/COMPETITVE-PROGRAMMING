@@ -1,31 +1,33 @@
 
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-void print(vector<vector<int>> arr)
-{
-    for (auto a : arr)
+/*===== TREENODE CODE =====
+struct TreeNode {
+    int val;
+    TreeNode * left;
+    TreeNode * right;
+    TreeNode(): val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x): val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode * left, TreeNode * right): val(x), left(left), right(right) {}
+};
+*/
+
+/* == GRAPH NODE TEMPLATE CODE ===
+struct Node {
+    int val;
+    vector < Node * > neighbors;
+    Node(): val(0), neighbors({}) {};
+    Node(int x): val(x), neighbors({}) {};
+    Node(int x, vector < Node * > neighbors): val(x), neighbors(neighbors) {};
+};
+*/
+
+int main(){
+    vector<int> sachin(10,1);
+    for (int i = 0; i < sachin.size(); i++)
     {
-        for (auto el : a)
-        {
-            cout << el << " ";
-        }
-        cout << endl;
+        cout << sachin[i] << endl;
     }
-}
-
-void reverse_a_2D_array_and_element(vector<vector<int>> &arr)
-{
-
-    for (auto &a : arr)
-        reverse(a.begin(), a.end());
-    reverse(arr.begin(), arr.end());
-}
-
-int main()
-{
-    vector<vector<int>> input({{1, 2}, {34, 27}, {11, 90}, {89, 46}});
-    reverse_a_2D_array_and_element(input);
-    print(input);
     return 0;
 }
