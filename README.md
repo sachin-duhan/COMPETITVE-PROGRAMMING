@@ -1,5 +1,5 @@
 # Competitive Programming
-Following repo contains the solutions of the good interview question and some famous problems on well known platforms like - LEETCODE, HACKERANK, GEEKSFORGEEKS, CODECHEF, CODEFORCES etc.
+The following repo contains the solutions of the good interview question and some famous problems on well-known platforms like - LEETCODE, HACKERANK, GEEKSFORGEEKS, CODECHEF, CODEFORCES, etc.
 
 ### How to start Competitive Programming (CP)?
 We are going to give you a short description that you should follow to start with competitive programming.  
